@@ -1,34 +1,37 @@
 import java.util.Scanner;
 
 public class ElementFreqs {
-    public static int CommonOccurance(int arr[], int index1, int index2, int element) {
+    public static int ElementFrequency(int[] arr, int startIndex, int endIndex, int element) {
         int count = 0;
-        for (int i = index1; i < index2; ++i) {
+        for (int i = startIndex; i <= endIndex; i++) {
             if (arr[i] == element)
-                ++count;
+            {
+                count = count +1;
+            }
         }
         return count;
     }
 
     public static void main(String[] args) {
-        int[] arr = {10, 220, 50, 1, 20, 900, 20, 1, 12};
-        int end = arr.length;
         System.out.println("Home assignment 2 by Munira Tabassum: ");
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter first Index: ");
-        int first = sc.nextInt();
-        System.out.println("Enter last Index: ");
-        int last = sc.nextInt();
+        int[] numbers = {30, 57, 93, 15, 31, 30, 49, 16, 30, 93};
+        Scanner input = new Scanner(System.in);
 
-        if (first <= 8 && last <= 8) {
-            System.out.println("Enter number to check in array between " + first + " and " + last);
-            int number = sc.nextInt();
-            sc.close();
+        System.out.println("Enter Starting Index (0 to " + (numbers.length-1) + "): ");
+        int start = input.nextInt();
+        System.out.println("Enter Ending Index (0 to " + (numbers.length-1) + "): ");
+        int end = input.nextInt();
+
+        if (start < numbers.length && end < numbers.length) {
+            System.out.println("Enter number to check in array between " + start + " and " + end);
+            int number = input.nextInt();
+            input.close();
             System.out.println("Your array is:");
-            for (int j : arr) {
+            for (int j : numbers) {
                 System.out.println(j);
             }
-            System.out.println("Frequency of " + number + " between " + first + " to " + last + " in this array =" + CommonOccurance(arr, first, last, number));
+            System.out.println();
+            System.out.println("Total number of times " + number + " appears between " + start + " to " + end + " is = " + ElementFrequency(numbers, start, end, number));
         } else {
             System.out.println("Please enter your index between valid range:[0-8] ");
         }
